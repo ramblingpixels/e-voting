@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import Svimg from "../Misc/Svimg";
+import Web3 from "web3";
 
+let tokenAbi = [
+{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+];
+const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
 const LandingPage = () => {
 	const [walletAddress, setWalletAddress] = useState("");
 
@@ -8,13 +13,14 @@ const LandingPage = () => {
 		console.log("Connect Wallet");
 
 		if (window.ethereum) {
-			console.log("Connected");
-
 			try {
-				const accounts = await window.ethereum.request({
-					method: "eth_requestAccounts",
-				});
-				setWalletAddress(accounts[0]);
+				console.log("Connected");
+				const account = web3.eth.accounts;
+				setWalletAddress(account.givenProvider.selectedAddress);
+				console.log(`Wallet: ${walletAddress}`);
+				const contract = new web3.eth.Contract(tokenAbi,"0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c");
+				console.log({ contract });
+			
 			} catch (error) {
 				console.log("Error");
 			}
@@ -26,8 +32,6 @@ const LandingPage = () => {
 	async function connectWallet() {
 		if (typeof window.ethereum != "undefined") {
 			await requestAccount();
-
-			const provider = new ethers.provider.Web3Provider(window.ethereum);
 		}
 	}
 
@@ -36,7 +40,7 @@ const LandingPage = () => {
 			<Svimg/>
 			<div className="buttons">
 				<button className="login">Login</button>
-				<button className="signup" onClick={requestAccount}>
+				<button className="signup" onClick={connectWallet}>
 					Connect Metamask Wallet
 				</button>
 				{/* <h3>Wallet: {walletAddress}</h3> */}
