@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Svimg from "../Misc/Svimg";
 import Web3 from "web3";
+import { useNavigate } from "react-router-dom";
+
 
 const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
 const LandingPage = () => {
 	const [walletAddress, setWalletAddress] = useState("");
+	const navigate = useNavigate();
 	async function requestAccount() {
 		console.log("Connect Wallet");
 
@@ -28,9 +31,13 @@ const LandingPage = () => {
 				const tokenAddress = "0x2B09d47D550061f995A3b5C6F0Fd58005215D7c8";
 				const contract = new web3.eth.Contract(minABI, tokenAddress);
 				contract.defautAccount = walletAddress;
-				console.log({ contract });
 				const result = await contract.methods.balanceOf(walletAddress).call()
-				console.log(result);
+				if (result > 0) {
+					navigate("/dashboard");
+				} else {
+					alert("You don't have SBT");
+				}
+				
 
 			} catch (error) {
 				console.log("Error");
