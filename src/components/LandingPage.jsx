@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Svimg from "../Misc/Svimg";
 import Web3 from "web3";
 
-
 const web3 = new Web3('https://bsc-dataseed1.binance.org:443');
 const LandingPage = () => {
 	const [walletAddress, setWalletAddress] = useState("");
@@ -33,11 +32,6 @@ const LandingPage = () => {
 				const result = await contract.methods.balanceOf(walletAddress).call()
 				console.log(result);
 
-				// const contract = new web3.eth.Contract(tokenAbi, "0x2B09d47D550061f995A3b5C6F0Fd58005215D7c8");
-				// contract.defautAccount = walletAddress;
-				// console.log({ contract });
-				// console.log(tokenAbi);
-			
 			} catch (error) {
 				console.log("Error");
 			}
@@ -60,7 +54,6 @@ const LandingPage = () => {
 				<button className="signup" onClick={connectWallet}>
 					Connect Metamask Wallet
 				</button>
-				{/* <h3>Wallet: {walletAddress}</h3> */}
 			</div>
 
 			<div className="header_text">
