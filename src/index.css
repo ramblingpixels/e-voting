@@ -41,7 +41,11 @@ button {
 	background-color: #3a3262;
 	box-shadow: 0px 1px 12px #3a3262;
 }
-
+.signup:hover {
+	cursor: pointer;
+	background-color: #3a3262;
+	box-shadow: 0px 1px 12px #3a3262;
+}
 .header_text {
 	position: absolute;
 	left: 15%;
