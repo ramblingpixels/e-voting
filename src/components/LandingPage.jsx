@@ -54,7 +54,6 @@ const LandingPage = () => {
 		<div>
 			<Svimg />
 			<div className="buttons">
-				<button className="login">Login</button>
 				<button className="signup" onClick={connectWallet}>
 					Connect Metamask Wallet
 				</button>
