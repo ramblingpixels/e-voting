@@ -12,7 +12,11 @@ const LandingPage = () => {
 
 		if (window.ethereum) {
 			try {
+				await window.ethereum.request({
+					method: "eth_requestAccounts",
+				});
 				console.log("Connected");
+				
 				const account = web3.eth.accounts;
 				setWalletAddress(account.givenProvider.selectedAddress);
 				console.log(`Wallet: ${walletAddress}`);
