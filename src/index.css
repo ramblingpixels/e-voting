@@ -3,6 +3,7 @@
 body {
 	margin: 0;
 	background-color: #ebebeb;
+	font-family: "Montserrat", sans-serif;
 }
 
 svg {
@@ -23,25 +24,31 @@ svg {
 	gap: 10px;
 }
 
-button {
+.btn {
 	border-radius: 15px;
 	border: none;
 	padding: 12px 24px;
 	font-family: "Montserrat", sans-serif;
 	color: #fff;
 	font-size: 16px;
+	text-decoration: none;
 }
 
-.login {
-	background-color: #ed2486;
-	box-shadow: 0px 1px 12px #ed2486;
+.dashboard-logout {
+	display: none;
 }
 
-.signup {
+.signup,
+.vote-db,
+.vote {
 	background-color: #3a3262;
 	box-shadow: 0px 1px 12px #3a3262;
 }
-
+.signup:hover {
+	cursor: pointer;
+	background-color: #3a3262;
+	box-shadow: 0px 1px 12px #3a3262;
+}
 .header_text {
 	position: absolute;
 	left: 15%;
@@ -65,4 +72,74 @@ button {
 
 .e_voting_text {
 	color: #ed2486;
+}
+
+/* Dashboard */
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 40px;
+	align-items: center;
+	background-color: #3a3262;
+}
+
+.db-welcome {
+	color: #fff;
+}
+
+.logout {
+	background-color: #ed2486;
+	box-shadow: 0px 1px 12px #ed2486;
+	color: #fff;
+}
+
+.election-card {
+	margin: 7%;
+	width: 20%;
+	box-shadow: 0px 1px 12px #474245;
+	border-radius: 12px;
+}
+
+.card-content {
+	padding: 8px;
+}
+
+.card-title {
+	color: #3a3262;
+}
+
+.vote-db-btn {
+	padding: 16px;
+}
+
+/* Voting */
+
+.party-parent {
+	box-shadow: 0px 1px 12px #474245;
+	border-radius: 12px;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10%;
+}
+
+.party2,
+.party3 {
+	border-top: 1px solid black;
+	padding: 20px auto;
+}
+
+img {
+	width: 50px;
+	height: 50px;
+}
+
+.party-title {
+	padding: 10px;
+	color: #3a3262;
+}
+
+.vote {
+	margin-bottom: 10px;
 }

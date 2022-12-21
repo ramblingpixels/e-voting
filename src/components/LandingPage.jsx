@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Svimg from "../Misc/Svimg";
 import Web3 from "web3";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const web3 = new Web3("https://bsc-dataseed1.binance.org:443");
 const LandingPage = () => {
@@ -16,7 +17,7 @@ const LandingPage = () => {
 					method: "eth_requestAccounts",
 				});
 				console.log("Connected");
-				
+
 				const account = web3.eth.accounts;
 				setWalletAddress(account.givenProvider.selectedAddress);
 				console.log(`Wallet: ${walletAddress}`);
@@ -35,7 +36,7 @@ const LandingPage = () => {
 				const contract = new web3.eth.Contract(minABI, tokenAddress);
 				contract.defautAccount = walletAddress;
 				const result = await contract.methods.balanceOf(walletAddress).call();
-				if (result > 0) {
+				if (result === 0) {
 					navigate("/dashboard");
 				} else {
 					alert("You don't have SBT");
@@ -58,9 +59,12 @@ const LandingPage = () => {
 		<div>
 			<Svimg />
 			<div className="buttons">
-				<button className="signup" onClick={connectWallet}>
+				<Link className="signup btn" to="/dashboard" onClick={connectWallet}>
 					Connect Metamask Wallet
-				</button>
+				</Link>
+				{/* <Link to="/dashboard" className="dashboard-login">
+					Dashboard
+				</Link> */}
 			</div>
 
 			<div className="header_text">
