@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Dashboard = () => {
+	const wa = useParams().walletAddress;
 	return (
 		<div>
 			<nav className="navbar">
-				<h1 className="db-welcome">Welcome, walletAddress</h1>
+				<h1 className="db-welcome">Welcome, {wa} </h1>
 				<div>
 					<Link to="/" className="logout btn">
 						Logout

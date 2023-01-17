@@ -10,8 +10,8 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<LandingPage />} />
-					<Route path="/dashboard" element={<Dashboard />} />
-					<Route path="/voting" element={<Voting />} />
+					<Route path="/dashboard/:walletAddress" element={<Dashboard />} />
+					<Route path="/voting/:walletAddress" element={<Voting />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
