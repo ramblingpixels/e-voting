@@ -11,7 +11,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<LandingPage />} />
 					<Route path="/dashboard/:walletAddress" element={<Dashboard />} />
-					<Route path="/voting/:walletAddress" element={<Voting />} />
+					<Route path="/voting" element={<Voting />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

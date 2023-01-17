@@ -18,7 +18,7 @@ const Dashboard = () => {
 				<div className="card-content">
 					<h1 className="card-title">Delhi MCD Elections 2022</h1>
 					<div className="vote-db-btn">
-						<Link to="/voting" className="vote-db btn">
+						<Link to='/voting' className="vote-db btn">
 							VOTE
 						</Link>
 					</div>
