@@ -1,31 +1,24 @@
 import React, { Component,useState, useEffect } from "react";
 import Web3 from "web3";
-import ElectionContractBuild from '../build/contracts/Election.json';
-
-
-const contractAddress = "0x4D670BAF0b71611fda6F39aa2d91c5c373fa352C";
-
+import ElectionContractBuild from './Election.json';
 
 class Voting extends Component {
 
   componentDidMount() {
-    this.loadBlockchainData()
+	  this.loadBlockchainData();
   }
 
   async loadBlockchainData() {
 	  const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
 	  const accounts = await web3.eth.getAccounts();	  
-	  this.setState({ account: accounts[0] });
 	  const networkId = await web3.eth.net.getId();
-	//    const nftContract = new web3.eth.Contract(NFTContractBuild.abi,NFTContractBuild.networks[networkId].address
+	  const electionContract = new web3.eth.Contract(ElectionContractBuild.abi, ElectionContractBuild.networks[networkId]);
+	  electionContract.setProvider(web3.givenProvider);
+	  console.log(electionContract);
+
 	  
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = { account: '' }
-  }
-
+	}
+	
   render() {
     return (
 <div className="voting-body">
