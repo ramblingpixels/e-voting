@@ -64,9 +64,6 @@ const LandingPage = () => {
 				<Link className="signup btn" onClick={connectWallet}>
 					Connect Metamask Wallet
 				</Link>
-				{/* <Link to="/dashboard" className="dashboard-login">
-					Dashboard
-				</Link> */}
 			</div>
 
 			<div className="header_text">
